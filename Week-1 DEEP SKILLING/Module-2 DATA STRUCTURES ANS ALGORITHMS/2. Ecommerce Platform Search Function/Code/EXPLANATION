@@ -1,0 +1,34 @@
+UNDERSTANDING ASYMPTOTIC NOTATIONS:
+
+Big O notation is a way for programmers to describe how much time or memory an algorithm needs as the size of the input increases especially as it gets really big.
+Instead of measuring exact times, we describe the rate of growth:
+•	How does the time taken grow as the number of items grows
+•	Does it stay the same, grow slowly, quickly, or explode
+
+O (1): Constant- Indicates that the operation doesn’t depend on the input size.
+O (log n): Logarithmic- Indicates that the operation is proportional to the logarithm of input size.
+O (n): Linear- Indicates that the operation is proportional to the input size.
+O (n log n): Linear Logarithmic- Indicates that the operation is proportional to input size times the logarithm of input size.
+O (n2): Quadratic- Indicates that the operation is proportional to square of the input size.
+Other: O(2n), O(nn), O(nx), O(n!)
+
+For search operations, 
+Best case occurs when the element is found in first try. 
+Time complexity :  Linear Search: O(1) & Binary Search: O(1).
+	Average case occurs when the element is somewhere in the middle. 
+Time complexity :  Linear Search: O(n/2) ≈ O(n) & Binary Search: O(log n).
+	Worst case occurs when the element is not found or is the last element. 
+Time complexity :  Linear Search: O(n) & Binary Search: O(log n).
+
+WHICH ALGORITHM IS BETTER?
+
+•It is better to use Linear Search for:
+    o	Small, temporary lists (e.g. recently viewed items)
+    o	Searching by partial names like “shirt” using .contains() or .startsWith()
+•It is better to use Binary Search for:
+    o	Large, sorted datasets (e.g. sorted by price, name, or product ID)
+    o	Fast, exact match lookups (e.g. when checking if a product ID exists)
+
+Binary Search is preferred for large, sorted datasets where speed matters.
+Linear Search is fine for small or unsorted lists, or when doing flexible matching.
+Binary search is preferred for fast exact lookups for an ecommerce platform.

@@ -1,0 +1,30 @@
+UNDERSTANDING RECURSIVE ALGORITHMS:
+
+A Recursive Algorithm is where a method calls itself to solve a smaller subproblem of the original task, until it reaches 
+a base case.
+Recursion helps in solving problems like tree traversals, Fibonacci with memoization, factorial, generating subsets.
+
+Recursion can simplify code for problems that are:
+-	Naturally repetitive (patterns, trees)
+-	Output is based on previous steps (growth, compounding)
+
+We can predict future values using a fixed growth rate(r):
+	FutureValue(n) = InitialValue * (1+r)n
+Formula for recursion: FutureValue(n) = (1+r) * FutureValue(n-1)
+
+Recursion Algorithms doesn't offer a major advantage but an Iterative loop is often better.
+
+TIME COMPLEXITY OF RECURSIVE ALGORITHMS:
+
+Each recursive call computes 1 multiplication and goes down by 1 year.
+Recursive Depth=n where n is number of years
+Which results in O(n) time complexity.
+
+OPTIMIZATION OF THE SOLUTION:
+
+Recursion is not necessary because
+•	Each step only depends on the previous one.
+•	No overlapping subproblems .
+So, we can optimize using Iterative approach for n years and calculate the Future Value to avoid StackOverFlow and 
+improve performance.
+
