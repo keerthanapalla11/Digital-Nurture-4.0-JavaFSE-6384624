@@ -1,0 +1,44 @@
+CREATE TABLE Accounts (
+    AccountID NUMBER PRIMARY KEY,
+    CustomerName VARCHAR2(50),
+    Balance NUMBER(10,2)
+);
+INSERT INTO Accounts VALUES (301, 'Keerthana', 25000);
+INSERT INTO Accounts VALUES (302, 'Husna', 15000);
+INSERT INTO Accounts VALUES (303, 'Poushya', 18000);
+INSERT INTO Accounts VALUES (304, 'Mahima', 22000);
+INSERT INTO Accounts VALUES (305, 'Rachana', 30000);
+
+COMMIT;
+
+SELECT * FROM Accounts;
+
+CREATE OR REPLACE PROCEDURE TransferFunds (
+    source_acct IN NUMBER,
+    target_acct IN NUMBER,
+    amount IN NUMBER
+) AS
+    source_balance NUMBER;
+BEGIN
+    SELECT Balance INTO source_balance FROM Accounts WHERE AccountID = source_acct;
+    IF source_balance < amount THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Insufficient funds in source account.');
+    END IF;
+    
+    UPDATE Accounts
+    SET Balance = Balance - amount
+    WHERE AccountID = source_acct;
+    
+    UPDATE Accounts
+    SET Balance = Balance + amount
+    WHERE AccountID = target_acct;
+    
+    COMMIT;
+END;
+/
+BEGIN
+    TransferFunds(101, 102, 5000);
+END;
+/
+SELECT * FROM Accounts;
+

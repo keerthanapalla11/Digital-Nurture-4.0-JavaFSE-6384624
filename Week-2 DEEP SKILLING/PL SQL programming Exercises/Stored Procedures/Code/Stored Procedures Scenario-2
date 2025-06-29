@@ -1,0 +1,33 @@
+CREATE TABLE Employees (
+    EmpID        NUMBER PRIMARY KEY,
+    Name         VARCHAR2(50),
+    Department   VARCHAR2(50),
+    Salary       NUMBER(10,2)
+);
+
+INSERT INTO Employees VALUES (1, 'Anil', 'Finance', 40000);
+INSERT INTO Employees VALUES (2, 'Keerthana', 'HR', 35000);
+INSERT INTO Employees VALUES (3, 'Poushya', 'Finance', 42000);
+INSERT INTO Employees VALUES (4, 'Mahima', 'IT', 50000);
+INSERT INTO Employees VALUES (5, 'Husna', 'Finance', 38000);
+
+COMMIT;
+SELECT * FROM Employees;
+
+CREATE OR REPLACE PROCEDURE UpdateEmployeeBonus (
+    dept_name IN VARCHAR2,
+    bonus_pct IN NUMBER
+) AS
+BEGIN
+    UPDATE Employees
+    SET Salary = Salary + (Salary * bonus_pct / 100)
+    WHERE Department = dept_name;
+    
+    COMMIT;
+END;
+/
+BEGIN
+    UpdateEmployeeBonus('Finance', 10);
+END;
+/
+SELECT * FROM Employees;
